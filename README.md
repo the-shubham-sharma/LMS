@@ -1,105 +1,85 @@
-Library Management System (LMS)
-Overview
+# Library Management System (LMS)
 
-This project is a Library Management System web application developed as part of a technical assignment. The system allows users to search books, issue books, return books, and manage fines. It also provides an Admin panel for managing books, memberships, and users.
+## Overview
+This project is a **Library Management System (LMS)** web application created for a technical assignment. The system allows users to search books, issue books, return books, and manage fines. It also provides an **Admin panel** to manage books, memberships, and users.
 
-The system has role-based access control:
+The system uses **role-based access control**:
+- **Admin** → Can access Maintenance, Transactions, and Reports
+- **User** → Can access Transactions and Reports only
 
-Admin can access Maintenance, Transactions, and Reports modules.
+The main focus of the project is to implement basic library workflows with validations and simple UI forms.
 
-User can access only Transactions and Reports.
+---
 
-The application focuses on implementing basic library operations, validations, and simple UI forms.
+## Modules
 
-Modules
-1. Maintenance (Admin Only)
-
-Admin can manage system data.
+### 1. Maintenance (Admin Only)
+The admin can manage system data.
 
 Features:
+- Add Book
+- Update Book
+- Add Membership
+- Update Membership
+- User Management
 
-Add Book
+---
 
-Update Book
-
-Add Membership
-
-Update Membership
-
-User Management
-
-2. Transactions
-
+### 2. Transactions
 Handles library operations.
 
 Features:
-
-Search available books
-
-Issue book
-
-Return book
-
-Pay fine
+- Search available books
+- Issue book
+- Return book
+- Pay fine
 
 Important rules:
+- Issue date cannot be before the current date.
+- Return date is automatically set to **15 days after issue date**.
+- If a fine exists, the user must confirm **Fine Paid** before completing the return.
 
-Issue date cannot be before today.
+---
 
-Return date is automatically set to 15 days after issue date.
-
-Fine must be confirmed before completing a return transaction if applicable.
-
-3. Reports
-
+### 3. Reports
 Displays basic information such as:
+- Available books
+- Issued books
+- Membership details
 
-Available books
+---
 
-Issued books
+## Validations
 
-Membership details
+The system performs the following validations:
 
-Validations
+- Required fields cannot be empty.
+- At least one field must be entered when searching books.
+- Issue date cannot be earlier than today.
+- Return date cannot exceed the allowed limit.
+- Error messages appear on the same page if the form is invalid.
 
-The system includes form validations such as:
+---
 
-Required fields cannot be empty.
+## Development Approach
 
-At least one field must be entered when searching books.
+The project was developed using a **simple modular approach**:
 
-Issue date cannot be earlier than the current date.
+1. Analyze the assignment requirements.
+2. Divide the system into modules (Maintenance, Transactions, Reports).
+3. Create pages for login, search, issue, and return book.
+4. Implement form validations and role-based access control.
 
-Return date cannot exceed the allowed limit.
+The goal was to build a **minimum working application** that satisfies the assignment requirements.
 
-Error messages are displayed on the same page.
+---
 
-Development Approach
+## Assumptions
 
-The project was developed using a modular approach:
-
-Understand the requirements and identify system modules.
-
-Design pages for login, transactions, and maintenance.
-
-Implement forms with validations.
-
-Connect modules to simulate a basic library workflow.
-
-The focus was on building a minimum working system that satisfies the assignment requirements.
-
-Assumptions
-
-A user can issue only one book at a time.
-
-The maximum borrowing period for a book is 15 days.
-
-A fine is charged per day if a book is returned after the due date.
-
-Each book has a unique serial number.
-
-Only Admin users can manage books and memberships.
-
-Membership must be active for issuing books.
-
-The system is designed for basic demonstration purposes with simple UI.
+1. A user can issue **only one book at a time**.
+2. The maximum borrowing period is **15 days**.
+3. A **daily fine** is charged for late returns.
+4. Each book has a **unique serial number**.
+5. Only **Admin users** can manage books and memberships.
+6. Membership must be **active** to issue books.
+7. The system is designed for **demonstration purposes** with basic UI.
